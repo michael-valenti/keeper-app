@@ -6,9 +6,22 @@ import notes from "../notes";
 
 
 function App() {
+
+const [notes, setNotes] = useState([])
+
+function addNote(note){
+setNotes(prevNotes => {
+ return [...prevNotes, note];
+})
+}
+
+
   return (
     <div>
       <Heading />
+      <CreateArea 
+      onAdd={addNote}
+      />
       {notes.map(notes => (
           <Note
             key={notes.key}
