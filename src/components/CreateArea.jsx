@@ -23,6 +23,10 @@ function CreateArea(props) {
     function submitNote(event){
         //pass the new note back to App
         props.onAdd(note);
+        setNote({
+            title: "",
+            content: ""
+        });
         //stop page from flashing/refreshing
         event.preventDefault();
     }
