@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-function CreateArea() {
+function CreateArea(props) {
 
     const [note, setNote] = useState({
         title: "",
@@ -20,6 +20,12 @@ function CreateArea() {
         })
     }
 
+    function submitNote(event){
+        //pass the new note back to App
+        props.onAdd(note);
+        //stop page from flashing/refreshing
+        event.preventDefault();
+    }
 
     return (
         <div>
@@ -27,7 +33,7 @@ function CreateArea() {
                 <input name="title" onChange= {handleChange} value={note.title} placeholder="Title" />
                 <textarea name="conent" onChange= {handleChange} value={note.content} placeholder="Take a note .." rows="3" />
 
-                <button>Add</button>
+                <button onClick={submitNote}>Add</button>
             </form>
         </div>
     );
