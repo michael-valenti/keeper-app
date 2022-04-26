@@ -5,26 +5,20 @@ import Note from "./Note";
 import notes from "../notes";
 
 
-function createNote(notes){
-
-return(
-  <Note
-    key={notes.key}
-    title={notes.title}
-    body={notes.content}
-    />
-);
-
+function App() {
+  return (
+    <div>
+      <Heading />
+      {notes.map(notes => (
+          <Note
+            key={notes.key}
+            title={notes.title}
+            body={notes.content}
+          />
+      ))}
+      <Footer />
+    </div>
+  );
 }
 
-function App() {
-    return (
-      <div>
-  <Heading />
-      {notes.map(createNote)}
-  <Footer />
-      </div>
-    );
-  }
-  
-  export default App;
+export default App;
